@@ -59,6 +59,17 @@
         font-size: 1rem;
       }
     }
+    .thumb {
+      width: 80px;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+    .thumb:hover {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -78,7 +89,15 @@
     <p style="margin: 20px 0;">
     Qui troverete tutte le informazioni sulla cerimonia religiosa: orario, indirizzo, parcheggi, ecc.
     </p>
-    <img src="oasi_sketch_bw.jpg" alt="Chiesa" style="max-width:100%; height:auto; border-radius:12px; margin-top:20px;">
+    <div id="chiesa-gallery">
+    <img id="main-img" src="oasi_sketch_bw.jpg" alt="Chiesa" style="max-width:100%; height:auto; border-radius:12px; margin-top:20px;">
+  
+    <div style="display:flex; justify-content:center; gap:10px; margin-top:15px;">
+      <img src="oasi_sketch_bw.jpg" class="thumb" alt="1" onclick="showImage(0)">
+      <img src="oasi_green.jpg" class="thumb" alt="2" onclick="showImage(1)">
+      <img src="oasi_winter_nav.jpg" class="thumb" alt="3" onclick="showImage(2)">
+    </div>
+  </div>
     <p style="margin-top:10px;">
       Oasi di Santa Maria, Via Lungo Naviglio, 24, 20063 Cernusco sul Naviglio MI, Italy
     </p>
@@ -107,5 +126,31 @@
     <p>Qui ci sarà la lista nozze o l' IBAN per chi vuole contribuire al nostro futuro insieme</p>
   </section>
 
+  <script>
+    const images = ["oasi_sketch_bw.jpg", "oasi_green.jpg", "oasi_winter_nav.jpg"];
+    let currentIndex = 0;
+    let timer = null;
+  
+    function showImage(index) {
+      currentIndex = index;
+      document.getElementById("main-img").src = images[index];
+      resetTimer();
+    }
+  
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+  
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(nextImage, 6000);
+    }
+  
+    window.onload = () => {
+      resetTimer();
+    };
+  </script>
+  
 </body>
 </html>
