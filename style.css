@@ -90,12 +90,12 @@ section {
 }
 
 /* Bordi opachi sfumati (overlay) sulle miniature solo se c’è overflow e classe has-scroll attiva */
-.thumbnail-row {
+.thumbnail-wrapper {
   position: relative; /* necessario per posizionare pseudo-elementi */
 }
 
-.thumbnail-row::before,
-.thumbnail-row::after {
+.thumbnail-wrapper::before,
+.thumbnail-wrapper::after {
   content: "";
   position: absolute;
   top: 0;
@@ -106,17 +106,17 @@ section {
   display: none; /* di default nascosti */
 }
 
-.thumbnail-row.has-scroll::before,
-.thumbnail-row.has-scroll::after {
+.thumbnail-wrapper.has-scroll::before,
+.thumbnail-wrapper.has-scroll::after {
   display: block;
 }
 
-.thumbnail-row.has-scroll::before {
+.thumbnail-wrapper.has-scroll::before {
   left: 0;
   background: linear-gradient(to right, rgba(255,244,242,1), rgba(255,244,242,0));
 }
 
-.thumbnail-row.has-scroll::after {
+.thumbnail-wrapper.has-scroll::after {
   right: 0;
   background: linear-gradient(to left, rgba(255,244,242,1), rgba(255,244,242,0));
 }
