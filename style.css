@@ -68,7 +68,7 @@ section {
   object-fit: cover;
   border-radius: 12px;
   box-shadow: /*box-shadow: [inset] -x -y blur, spread, color*/ /* inset = interna, x and y for coordinates, blur , spread and color handle intestiy, width and color*/
-    inset 0 0 20px 8px rgba(255, 244, 242, 0.6);
+    0 0 20px 10px rgba(255, 244, 242, 0.6);
   transition: opacity 0.5s ease-in-out;
   display: block;
 }
