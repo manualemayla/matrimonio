@@ -1,5 +1,3 @@
-// carousel.js
-
 const images = [
   'oasi_sketch_bw.jpg',
   'oasi_green.jpg',
@@ -10,8 +8,8 @@ const images = [
 let currentImage = 0;
 let interval;
 
-const mainImage = document.getElementById('mainImage');
-const thumbnails = document.querySelectorAll('.thumbnail');
+let mainImage;
+let thumbnails;
 
 function showImage(index) {
   currentImage = index;
@@ -32,15 +30,6 @@ function stopSlideshow() {
   clearInterval(interval);
 }
 
-thumbnails.forEach((thumb, index) => {
-  thumb.addEventListener('click', () => {
-    stopSlideshow();
-    showImage(index);
-    startSlideshow();
-  });
-});
-
-// Funzione per aggiornare la classe has-scroll sul wrapper, non sulla thumbnail-row
 function checkThumbnailScroll() {
   const wrapper = document.querySelector('.thumbnail-wrapper');
   if (!wrapper) return;
@@ -59,22 +48,22 @@ function checkThumbnailScroll() {
   }
 }
 
-// Qui aspettiamo che il DOM sia pronto prima di iniziare tutto
 window.addEventListener('load', () => {
-  // Inizializza il carosello: mostra immagine iniziale e avvia slideshow
+  mainImage = document.getElementById('mainImage');
+  thumbnails = document.querySelectorAll('.thumbnail');
+
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => {
+      stopSlideshow();
+      showImage(index);
+      startSlideshow();
+    });
+  });
+
   showImage(currentImage);
   startSlideshow();
 
-  // Controlla se serve la sfumatura scroll (has-scroll)
   checkThumbnailScroll();
 });
 
-// Ricalcola la sfumatura al ridimensionamento finestra
 window.addEventListener('resize', checkThumbnailScroll);
-
-
-
-
-// Inizializzazione
-showImage(currentImage);
-startSlideshow();
