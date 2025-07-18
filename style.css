@@ -50,7 +50,27 @@ section {
   max-width: 600px;
   margin: 20px auto;
 }
+/* Pseudo-elementi per l'effetto sfumato */
+.carousel-container::before,
+.carousel-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  z-index: 2;
+  pointer-events: none; /* lascia passare i click allo scroll */
+}
 
+.carousel-container::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255,244,242,1), rgba(255,244,242,0));
+}
+
+.carousel-container::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255,244,242,1), rgba(255,244,242,0));
+}
 .main-image-wrapper {
   height: 350px; /* spazio riservato fisso */
   display: flex;
@@ -76,6 +96,7 @@ section {
   margin-top: 15px;
   display: flex;
   flex-wrap: nowrap; /* non andare a capo */
+  justify-content: center;
   overflow-x: auto;
   gap: 10px;
   padding-bottom: 10px;
