@@ -40,24 +40,38 @@ thumbnails.forEach((thumb, index) => {
   });
 });
 
+// Funzione per aggiornare la classe has-scroll sul wrapper, non sulla thumbnail-row
 function checkThumbnailScroll() {
-  const thumbnailRow = document.querySelector('.thumbnail-row');
+  const wrapper = document.querySelector('.thumbnail-wrapper');
+  if (!wrapper) return;
+
+  const thumbnailRow = wrapper.querySelector('.thumbnail-row');
   if (!thumbnailRow) return;
 
   console.log('clientWidth:', thumbnailRow.clientWidth, 'scrollWidth:', thumbnailRow.scrollWidth);
 
   if (thumbnailRow.scrollWidth > thumbnailRow.clientWidth) {
-    thumbnailRow.classList.add('has-scroll');
-    console.log('✅ has-scroll aggiunta');
+    wrapper.classList.add('has-scroll');
+    console.log('✅ has-scroll aggiunta su wrapper');
   } else {
-    thumbnailRow.classList.remove('has-scroll');
-    console.log('❌ has-scroll rimossa');
+    wrapper.classList.remove('has-scroll');
+    console.log('❌ has-scroll rimossa su wrapper');
   }
 }
 
-// Controlla all'avvio, e anche al resize
-window.addEventListener('load', checkThumbnailScroll);
+// Qui aspettiamo che il DOM sia pronto prima di iniziare tutto
+window.addEventListener('load', () => {
+  // Inizializza il carosello: mostra immagine iniziale e avvia slideshow
+  showImage(currentImage);
+  startSlideshow();
+
+  // Controlla se serve la sfumatura scroll (has-scroll)
+  checkThumbnailScroll();
+});
+
+// Ricalcola la sfumatura al ridimensionamento finestra
 window.addEventListener('resize', checkThumbnailScroll);
+
 
 
 
