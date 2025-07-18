@@ -1,9 +1,10 @@
-  <style>
-    body { /*TO-DO: 
+ /*TO-DO: 
       Add images, maps, or fancy transitions
       Split sections into separate pages
       Embed your IBAN or PayPal securely
       */
+
+body {
       font-family: 'Dancing Script', cursive; /* alternative Titoli in Great Vibes e testi in Dancing Script o qualsiasi altro */
       background:  #fff4f2;  /* nuovo sfondo rosa antico pesca chiarissimo. per bianco #f9f9f9;, più “mattone” #fae4df, più “rosa” #ffeef0, più “neutro caldo”? Usa #fef7f5 */
       color: #333;
@@ -106,5 +107,3 @@
       max-width: 100%;
       height: auto;
     }
-            
-  </style>
