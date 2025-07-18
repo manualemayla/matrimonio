@@ -40,17 +40,24 @@ thumbnails.forEach((thumb, index) => {
   });
 });
 
-// Controllo overflow thumbnails e gestione classe .has-scroll
 function checkThumbnailScroll() {
   const thumbnailRow = document.querySelector('.thumbnail-row');
   if (!thumbnailRow) return;
 
+  console.log('clientWidth:', thumbnailRow.clientWidth, 'scrollWidth:', thumbnailRow.scrollWidth);
+
   if (thumbnailRow.scrollWidth > thumbnailRow.clientWidth) {
     thumbnailRow.classList.add('has-scroll');
+    console.log('✅ has-scroll aggiunta');
   } else {
     thumbnailRow.classList.remove('has-scroll');
+    console.log('❌ has-scroll rimossa');
   }
 }
+
+// Controlla all'avvio, e anche al resize
+window.addEventListener('load', checkThumbnailScroll);
+window.addEventListener('resize', checkThumbnailScroll);
 
 
 
