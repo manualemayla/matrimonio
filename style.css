@@ -32,7 +32,7 @@ body {
     }
     @media (max-width: 600px) { /* questo lo rende responsive a schermi piccoli, 600px, mobile, adattando il look*/
       body {
-        padding: 20px 5px;
+        padding: 20px 10px;
       }
     
       nav a {
