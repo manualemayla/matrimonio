@@ -40,6 +40,20 @@ thumbnails.forEach((thumb, index) => {
   });
 });
 
+// Controllo overflow thumbnails e gestione classe .has-scroll
+function checkThumbnailScroll() {
+  const thumbnailRow = document.querySelector('.thumbnail-row');
+  if (!thumbnailRow) return;
+
+  if (thumbnailRow.scrollWidth > thumbnailRow.clientWidth) {
+    thumbnailRow.classList.add('has-scroll');
+  } else {
+    thumbnailRow.classList.remove('has-scroll');
+  }
+}
+
+
+
 // Inizializzazione
 showImage(currentImage);
 startSlideshow();
