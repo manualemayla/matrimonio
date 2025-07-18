@@ -137,20 +137,6 @@ section {
   border: 2px solid #b76e79;
 }
 
-/* === MINI THUMB ALTERNATIVA (non usata?) === */
-.thumb {
-  width: 80px;
-  height: auto;
-  border-radius: 8px;
-  cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.3s;
-}
-
-.thumb:hover {
-  opacity: 1;
-}
-
 /* === RESPONSIVE === */
 @media (max-width: 600px) {
   body {
