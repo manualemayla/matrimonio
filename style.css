@@ -50,27 +50,7 @@ section {
   max-width: 600px;
   margin: 20px auto;
 }
-/* Pseudo-elementi per l'effetto sfumato */
-.carousel-container::before,
-.carousel-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 30px;
-  z-index: 2;
-  pointer-events: none; /* lascia passare i click allo scroll */
-}
 
-.carousel-container::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(255,244,242,1), rgba(255,244,242,0));
-}
-
-.carousel-container::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(255,244,242,1), rgba(255,244,242,0));
-}
 .main-image-wrapper {
   height: 350px; /* spazio riservato fisso */
   display: flex;
@@ -85,8 +65,13 @@ section {
   max-width: 100%;
   height: auto;
   width: auto;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 12px;
+  box-shadow: /*box-shadow: [inset] -x -y blur, spread, color*/ /* inset = interna, x and y for coordinates, blur , spread and color handle intestiy, width and color*/
+    inset 0 20px 20px -20px rgba(255, 255, 255, 0.4), /* top */
+    inset 0 -20px 20px -20px rgba(255, 255, 255, 0.4), /* bottom */
+    inset 20px 0 20px -20px rgba(255, 255, 255, 0.4), /* left */
+    inset -20px 0 20px -20px rgba(255, 255, 255, 0.4); /* right */
   transition: opacity 0.5s ease-in-out;
   display: block;
 }
@@ -106,6 +91,38 @@ section {
 
 .thumbnail-row::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
+}
+
+/* Bordi opachi sfumati (overlay) sulle miniature solo se c’è overflow e classe has-scroll attiva */
+.thumbnail-row {
+  position: relative; /* necessario per posizionare pseudo-elementi */
+}
+
+.thumbnail-row::before,
+.thumbnail-row::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12px; /* ridotto rispetto al precedente 20px (2/3 circa) */
+  z-index: 2;
+  pointer-events: none;
+  display: none; /* di default nascosti */
+}
+
+.thumbnail-row.has-scroll::before,
+.thumbnail-row.has-scroll::after {
+  display: block;
+}
+
+.thumbnail-row.has-scroll::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255,244,242,1), rgba(255,244,242,0));
+}
+
+.thumbnail-row.has-scroll::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255,244,242,1), rgba(255,244,242,0));
 }
 
 .thumbnail {
