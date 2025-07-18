@@ -1,109 +1,140 @@
- /*TO-DO: 
-fix image size
-*/
+/* === BASE === */
 body {
-      font-family: 'Dancing Script', cursive; /* alternative Titoli in Great Vibes e testi in Dancing Script o qualsiasi altro */
-      background:  #fff4f2;  /* nuovo sfondo rosa antico pesca chiarissimo. per bianco #f9f9f9;, più “mattone” #fae4df, più “rosa” #ffeef0, più “neutro caldo”? Usa #fef7f5 */
-      color: #333;
-      text-align: center;
-      padding: 30px;
-    }
-    h1, h2 {
-      color: #b76e79; /* rosa antico */
-    }
-    nav {
-      margin: 30px 0;
-    }
-    nav a {
-      display: inline-block;
-      margin: 0 15px;
-      padding: 10px 15px;
-      background: #b76e79; /* stess rosa antico del testo dei titoli */
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 22px; /* 1.25rem o 20px, aumentato di 1 notch. default 1 rem sono 16px */
-    }
-    section {
-      margin-top: 60px;
-      padding: 20px;
-      border-top: 1px solid #ccc;
-    }
-    @media (max-width: 600px) { /* questo lo rende responsive a schermi piccoli, 600px, mobile, adattando il look*/
-      body {
-        padding: 20px 10px;
-      }
-    
-      nav a {
-        display: block;
-        margin: 10px auto;
-        font-size: 18px;
-        width: 80%;
-      }
-    
-      h1, h2 {
-        font-size: 1.8rem;
-      }
-    
-      p {
-        font-size: 1rem;
-      }
-    }
-    .thumb {
-      width: 80px;
-      height: auto;
-      border-radius: 8px;
-      cursor: pointer;
-      opacity: 0.6;
-      transition: opacity 0.3s;
-    }
-    .thumb:hover {
-      opacity: 1;
-    }
-    
-    .carousel-container {
-      position: relative;
-      max-width: 600px;
-      margin: 20px auto;
-    }
-    .main-image {
-      width: 100%;
-      max-height: 350px;
-      height: auto;
-      width: auto;
-      object-fit: contain;
-      border-radius: 12px;
-      transition: opacity 0.5s ease-in-out;
-      display: block;
-      margin: 0 auto;
-    }
-    
-    .thumbnail-row {
-      margin-top: 15px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    
-    .thumbnail {
-      width: 100px;
-      height: 70px;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      opacity: 0.6;
-      transition: opacity 0.3s ease;
-    }
-    
-    .thumbnail:hover,
-    .thumbnail.active {
-      opacity: 1;
-      border: 2px solid #b76e79;
-    }
-    
-    img {
-      max-width: 100%;
-      height: auto;
-    }
+  font-family: 'Dancing Script', cursive; /* alternative Titoli in Great Vibes e testi in Dancing Script o qualsiasi altro */
+  background: #fff4f2; /* rosa antico pesca chiarissimo */
+  color: #333;
+  text-align: center;
+  padding: 30px;
+}
+
+h1, h2 {
+  color: #b76e79; /* rosa antico */
+}
+
+p {
+  font-size: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* === NAVIGAZIONE === */
+nav {
+  margin: 30px 0;
+}
+
+nav a {
+  display: inline-block;
+  margin: 0 15px;
+  padding: 10px 15px;
+  background: #b76e79; /* stesso rosa antico dei titoli */
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 22px; /* 1.25rem o 20px, default 1rem = 16px */
+}
+
+/* === SEZIONI === */
+section {
+  margin-top: 60px;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+}
+
+/* === CAROUSEL PRINCIPALE === */
+.carousel-container {
+  position: relative;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.main-image-wrapper {
+  height: 350px; /* spazio riservato fisso */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* nasconde parti fuori dallo spazio */
+  margin-bottom: 10px;
+}
+
+.main-image {
+  max-height: 100%; /* rispetta il contenitore */
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: opacity 0.5s ease-in-out;
+  display: block;
+}
+
+/* === MINIATURE === */
+.thumbnail-row {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: nowrap; /* non andare a capo */
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 10px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.thumbnail-row::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.thumbnail {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+  opacity: 1;
+  border: 2px solid #b76e79;
+}
+
+/* === MINI THUMB ALTERNATIVA (non usata?) === */
+.thumb {
+  width: 80px;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.thumb:hover {
+  opacity: 1;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px auto;
+    font-size: 18px;
+    width: 80%;
+  }
+
+  h1, h2 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
