@@ -59,6 +59,9 @@ section {
   overflow: hidden; /* nasconde parti fuori dallo spazio */
   margin-bottom: 10px;
   border-radius: 12px;
+    /* aggiunta box-shadow per dissolvenza rosa delicata */
+  box-shadow:
+    0 0 30px 15px rgba(183, 110, 121, 0.25); /* rosa antico leggero, sfumato */
 }
 
 .main-image {
