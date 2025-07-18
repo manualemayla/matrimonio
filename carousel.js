@@ -3,6 +3,7 @@
 const images = [
   'oasi_sketch_bw.jpg',
   'oasi_green.jpg',
+  'oasi_green_nac.jpg',
   'oasi_winter_nav.jpg'
 ];
 
